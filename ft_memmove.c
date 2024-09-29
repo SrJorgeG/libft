@@ -6,12 +6,51 @@
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 00:53:40 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/09/24 13:33:47 by jgomez-d         ###   ########.fr       */
+/*   Updated: 2024/09/29 23:34:45 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char	*d;
+	unsigned char	*s;
+
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *) dest;
+	s = (unsigned char *) src;
+	if (s < d && d < s + n)
+		while (n--)
+			d[n] = s[n];
+	else
+		while (n--)
+			*(d++) = *(s++);
+	return (dest);
+}
+
+/*
+#include "libft.h"
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char	*d;
+	unsigned char	*s;
+
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *) dest;
+	s = (unsigned char *) src;
+	if (s < d && d < s + n)
+		while (n--)
+			d[n] = s[n];
+	else
+		while (n--)
+			*(d++) = *(s++);
+	return (dest);
+}
+// NO FUNCIONA
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*a;
@@ -20,21 +59,27 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*d;
 	size_t			m;
 
-	if (dest == NULL && src == NULL)
-		return (dest);
-	if (!n)
-		return ((void *)src);
 	m = n;
 	a = (unsigned char *)src;
 	z = (unsigned char *)dest;
+	c = (unsigned char *)src + n;
 	d = c;
-	while (n--)
-		*(c++) = *(a++);
-	while (m--)
-		*(z++) = *(d++);
+	if (n && dest == NULL && src == NULL)
+	{
+		while (n--)
+			*(c++) = *(a++);
+		while (m--)
+			*(z++) = *(d++);
+	}
 	return (dest);
 }
-/*
+
+
+
+
+
+
+
 #include <string.h> 
 #include <stdio.h>
 

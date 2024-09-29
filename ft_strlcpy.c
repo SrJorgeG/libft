@@ -6,7 +6,7 @@
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:23:09 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/09/24 11:53:27 by jgomez-d         ###   ########.fr       */
+/*   Updated: 2024/09/30 00:43:04 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,32 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
+	size_t	l;
 
-	i = -1;
-	while ((++i < size) && (src[i] != 0))
-		dst[i] = src[i];
-	return (ft_strlen(src));
+	i = 0;
+	l = ft_strlen(src);
+	if (size)
+	{
+		while ((i < size - 1) && (src[i]))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (l);
 }
+
+/*
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+	unsigned char	*a;
+	unsigned char	*z;
+
+	if (dest == NULL && src == NULL)
+		return (dest);
+	a = (unsigned char *)src;
+	z = (unsigned char *)dest;
+	while (n--)
+		*(z++) = *(a++);
+	return (dest);
+*/
