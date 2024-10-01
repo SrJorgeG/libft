@@ -6,7 +6,7 @@
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 00:49:54 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/09/24 01:21:22 by jgomez-d         ###   ########.fr       */
+/*   Updated: 2024/10/01 06:07:19 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*str;
 
 	str = malloc(nmemb * size);
-	if (!nmemb || !size || !str)
-		return (NULL);
-	return (ft_memset(str, '0', nmemb * size));
+	if (str)
+		ft_bzero(str, nmemb * size);
+	return (str);
 }
