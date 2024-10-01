@@ -6,7 +6,7 @@
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 01:04:23 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/10/01 06:11:46 by jgomez-d         ###   ########.fr       */
+/*   Updated: 2024/10/02 00:11:51 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sd;
 
-	sd = (char *)malloc(sizeof(char) * len + 1);
+	if (start >= ft_strlen(s))
+	{
+		sd = (char *)ft_calloc(1, 1);
+		if (!sd)
+			return (NULL);
+		return (sd);
+	}
+	sd = (char *)ft_calloc(sizeof(char), len + 1);
 	if (!sd)
 		return (NULL);
 	while (start--)
