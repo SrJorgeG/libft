@@ -6,7 +6,7 @@
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 01:03:56 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/09/30 00:57:48 by jgomez-d         ###   ########.fr       */
+/*   Updated: 2024/10/01 03:11:46 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	i = ft_strlen(src);
 	j = ft_strlen(dst);
-	
-	ft_strlcpy(dst + j, src, size);
+	if (j >= size)
+		return (i + size);
+	if (!size)
+		return (i + size);
+	ft_strlcpy(dst + j, src, size - j);
 	return (i + j);
 }
 
