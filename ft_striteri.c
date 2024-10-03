@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 01:04:23 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/10/02 22:31:33 by jgomez-d         ###   ########.fr       */
+/*   Created: 2024/10/03 04:32:55 by jgomez-d          #+#    #+#             */
+/*   Updated: 2024/10/03 04:43:01 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char	*sd;
+	size_t	i;
 
-	if (start >= ft_strlen(s))
-		return ((char *)ft_calloc(1, 1));
-	sd = (char *)ft_calloc(sizeof(char), len + 1);
-	if (!sd)
-		return (NULL);
-	while (start--)
-		s++;
-	return (ft_memcpy(sd, s, len));
+	if (!s || !f)
+		return ;
+	i = -1;
+	while (s[++i])
+		f(i, s + i);
 }

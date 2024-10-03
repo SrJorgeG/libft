@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 01:04:23 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/10/02 22:31:33 by jgomez-d         ###   ########.fr       */
+/*   Created: 2024/10/03 04:45:20 by jgomez-d          #+#    #+#             */
+/*   Updated: 2024/10/03 05:06:06 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*sd;
-
-	if (start >= ft_strlen(s))
-		return ((char *)ft_calloc(1, 1));
-	sd = (char *)ft_calloc(sizeof(char), len + 1);
-	if (!sd)
-		return (NULL);
-	while (start--)
-		s++;
-	return (ft_memcpy(sd, s, len));
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		if (n == -2147483648)
+		{
+			ft_putchar_fd('2', fd);
+			n = -147483648;
+		}
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd((n % 10) + '0', fd);
 }
