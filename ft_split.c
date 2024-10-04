@@ -6,37 +6,35 @@
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:37:57 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/10/03 04:24:19 by jgomez-d         ###   ########.fr       */
+/*   Updated: 2024/10/04 20:26:33 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_wlength(const char *s, int c)
+size_t	ft_wlength(const char *s, char c)
 {
 	size_t	len;
-	size_t	i;
 
 	len = 0;
-	i = 0;
 	while (s[len] && s[len] != c)
 		len++;
 	return (len);
 }
 
-size_t	ft_chrcounter(const char *s, int c)
+size_t	ft_chrcounter(const char *s, char c)
 {
 	size_t	cont;
 	size_t	i;
 
-	cont = 1;
+	cont = 0;
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] != c)
 		{
 			cont++;
-			while (s[i] == c)
+			while (s[i] != c && s[i])
 				i++;
 		}
 		else
@@ -61,7 +59,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	spl = malloc(sizeof(char *) * ft_chrcounter(s, c) + 1);
+	spl = malloc(sizeof(char *) * (ft_chrcounter(s, c) + 1));
 	if (!spl)
 		return (NULL);
 	while (s[i])

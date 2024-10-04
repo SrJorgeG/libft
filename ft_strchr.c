@@ -6,7 +6,7 @@
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 01:00:26 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/10/03 07:00:14 by jgomez-d         ###   ########.fr       */
+/*   Updated: 2024/10/04 20:26:52 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
-	char	*sd;
 
-	sd = (char *)s;
-	i = 0;
-	while (i < ft_strlen(s))
-	{
-		if (sd[i] == c)
-			return (&sd[i]);
-		i++;
-	}
-	if (sd[i] == c)
-		return (&sd[i]);
+	i = -1;
+	while ((++i) < ft_strlen(s))
+		if ((char)s[i] == (char)c)
+			return ((char *)&s[i]);
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }
