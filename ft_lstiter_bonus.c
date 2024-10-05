@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 02:04:08 by jgomez-d          #+#    #+#             */
-/*   Updated: 2024/10/05 09:54:16 by jgomez-d         ###   ########.fr       */
+/*   Created: 2024/10/05 09:52:14 by jgomez-d          #+#    #+#             */
+/*   Updated: 2024/10/05 10:12:25 by jgomez-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*temp;
-	t_list	*aux;
-
-	aux = *lst;
-	if (!aux)
+	if (!lst || !f)
 		return ;
-	while (aux)
+	while (lst)
 	{
-		temp = aux->next;
-		del(aux->content);
-		free(aux);
-		aux = temp;
+		f(lst->content);
+		lst = lst->next;
 	}
-	*lst = NULL;
 }
+
+/*
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	size_t	i;
+
+	if (!s || !f)
+		return ;
+	i = -1;
+	while (s[++i])
+		f(i, s + i);
+}
+*/
