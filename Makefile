@@ -6,7 +6,7 @@
 #    By: jgomez-d <jgomez-d@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 18:23:49 by jgomez-d          #+#    #+#              #
-#    Updated: 2024/10/05 10:13:57 by jgomez-d         ###   ########.fr        #
+#    Updated: 2024/10/07 20:06:21 by jgomez-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ BSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_b
 OBJECTS = $(SOURCES:.c=.o)
 BOBJS = $(BSRC:.c=.o)
 
+# RULES
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
@@ -34,7 +35,7 @@ bonus: $(OBJECTS) $(BOBJS)
 	ar rcs $(NAME) $(OBJECTS) $(BOBJS)
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(BOBJS)
 
 fclean: clean
 	rm -f $(NAME) 
